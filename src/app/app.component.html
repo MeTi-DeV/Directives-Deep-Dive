@@ -4,11 +4,8 @@
       <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">
         Only show odd numbers
       </button>
-      <br /><br />
 
       <ul class="list-group">
-        <!-- comment 1 : at this time split numbers to odd and aeven
-        and use ngIf for even list and odd list -->
         <div *ngIf="onlyOdd">
           <li
             *ngFor="let odd of oddNumbers"
@@ -22,20 +19,45 @@
           </li>
         </div>
 
-        <div *ngIf="!onlyOdd">
+        <!--        <div *ngIf="!onlyOdd">-->
+        <!--          <li-->
+        <!--            *ngFor="let even of evenNumbers"-->
+        <!--            class="list-group-item"-->
+        <!--            [ngClass]="{ oddColor: even % 2 !== 0 }"-->
+        <!--            [ngStyle]="{-->
+        <!--              backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'-->
+        <!--            }"-->
+        <!--          >-->
+        <!--            {{ even }}-->
+        <!--          </li>-->
+        <!--          <ng-template [ngIf]="!onlyOdd">-->
+        <!--            <li-->
+        <!--              *ngFor="let even of evenNumbers"-->
+        <!--              class="list-group-item"-->
+        <!--              [ngClass]="{ oddColor: even % 2 !== 0 }"-->
+        <!--              [ngStyle]="{-->
+        <!--              backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'-->
+        <!--            }"-->
+        <!--            >-->
+        <!--              {{ even }}-->
+        <!--            </li>-->
+        <!--          </ng-template>-->
+        <!--        </div>-->
+        <!--        comment : my own directive that created works like *ngIf-->
+        <div *appUnless="onlyOdd">
           <li
             *ngFor="let even of evenNumbers"
             class="list-group-item"
             [ngClass]="{ oddColor: even % 2 !== 0 }"
             [ngStyle]="{
-              backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'
-            }"
+                        backgroundColor: even % 2 !== 0 ? 'yellow' : 'transparent'
+                      }"
           >
             {{ even }}
           </li>
         </div>
+
       </ul>
-      <!-- every where I call this Directive as propert it change background color to green -->
       <p appBasicHighlight>my Own directive work !!!</p>
       <p appBetterHighlight defaultColor="yellow" highLightColor="Red">It's better to use appBetterHighLight !!!</p>
     </div>
