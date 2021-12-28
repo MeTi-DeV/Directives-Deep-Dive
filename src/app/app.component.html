@@ -60,6 +60,15 @@
       </ul>
       <p appBasicHighlight>my Own directive work !!!</p>
       <p appBetterHighlight defaultColor="yellow" highLightColor="Red">It's better to use appBetterHighLight !!!</p>
+      <!--      comment : ngSwitch is for while we have many ngIf conditions it's good suggestion
+      too use ngSwitch and put our values by ngSwitchCase
+      for this I defined vallue in app.component-->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">5</p>
+        <p *ngSwitchCase="10">10</p>
+        <p *ngSwitchCase="100">100</p>
+        <p *ngSwitchDefault>default</p>
+      </div>
     </div>
   </div>
 </div>
